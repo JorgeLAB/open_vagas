@@ -5,3 +5,10 @@ $(function() {
 $(function() {
   $('[data-toggle="popover"]').popover();
 });
+
+$(function () {
+
+  $('[data-toggle="offcanvas"]').on('click', function () {
+    $('.offcanvas-collapse').toggleClass('open')
+  })
+})
