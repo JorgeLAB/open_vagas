@@ -1,0 +1,37 @@
+%header.header_auth.text-center
+  .row
+    %h3.title.col-12.description-page.mt-1 Acessar sua conta
+
+.container
+  .d-flex.justify-content-center.col-sm-12.col-md-10.col-lg
+    .col-lg-4
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-inputs
+          .form-row
+            .form-group.w-100
+              = f.input :email,
+                required: true,
+                placeholder:"",
+                label: "Email",
+                autofocus: true,
+                input_html: { autocomplete: "email", class: "rounded-bottom border-bottom-2 form-control" }
+          .form-row
+            .form-group.w-100
+              = f.input :password,
+                required: true,
+                placeholder:"",
+                label: "Senha",
+                input_html: { autocomplete: "new-password" }
+              .link-input
+                = link_to "Esqueceu sua senha?", "/users/password/new"
+          .form-row
+            - if devise_mapping.rememberable?
+              .form-group.form-check
+                = f.check_box :remember_me, class: "form-check-input"
+                = f.label :remember_me, class: "form-check-label"
+          .form-row
+            = f.submit "Entrar", class: "text-uppercase btn btn-lg btn-primary col-12 button-submit-auth-entry"
+          .form-row
+            .text-center.mt-2
+              %p.fs-6.lh-sm
+                Não possui cadastro? #{link_to "cadastre-se.", "/users/sign_up", class: "text-uppercase submit_auth"}

@@ -13,6 +13,7 @@ import 'popper.js'
 import 'bootstrap'
 import "./scss/application"
 import "./custom"
+import "./devise"
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

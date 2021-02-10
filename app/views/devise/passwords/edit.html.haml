@@ -1,0 +1,35 @@
+%header.header_auth.text-center
+  .row
+    %h3.title.col-12.description-page.mt-1 Cadastro
+
+.container
+  .d-flex.justify-content-center.col-sm-12.col-md-10.col-lg
+    .col-lg-4
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = f.error_notification
+        = f.input :reset_password_token, as: :hidden
+        = f.full_error :reset_password_token
+        .form-inputs
+          .form-row
+            .form-group.w-100
+              = f.input :password,
+                label: "New password",
+                required: true,
+                autofocus: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password", class: "rounded-bottom border-bottom-5 form-control"  }
+
+          .form-row
+            .form-group.w-100
+              = f.input :password_confirmation,
+                label: "Confirm your new password",
+                required: true,
+                input_html: { autocomplete: "new-password", class: "rounded-bottom border-bottom-5 form-control"  }
+
+        .form-actions
+          = f.button :submit, "Trocar", class: "text-uppercase btn btn-lg btn-primary col-12 button-submit-auth-entry"
+
+        .form-row
+          .text-center.mt-2
+            %p.fs-6.lh-sm
+              Faça #{link_to "Login", "/users/sign_in", class: "text-uppercase submit_auth"}

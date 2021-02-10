@@ -1,0 +1,41 @@
+%header.header_auth.text-center
+  .row
+    %h3.title.col-12.description-page.mt-1 Cadastro
+
+.container
+  .d-flex.justify-content-center.col-sm-12.col-md-10.col-lg
+    .col-lg-4
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.error_notification
+        .form-inputs
+          .form-row
+            .form-group.w-100
+              = f.input :email,
+                required: true,
+                placeholder:"",
+                label: "Email",
+                autofocus: true,
+                input_html: { autocomplete: "email", class: "rounded-bottom border-bottom-2 form-control" }
+          .form-row
+            .form-group.w-100
+              = f.input :password,
+                required: true,
+                placeholder:"",
+                label: "Senha",
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password", class: "rounded-bottom border-bottom-5 form-control" }
+          .form-row
+            .form-group.w-100
+              = f.input :password_confirmation,
+                label: "Confirmar Senha",
+                placeholder:"",
+                required: true,
+                input_html: { autocomplete: "new-password", class: "rounded-bottom border-bottom-5 form-control" }
+
+        .form-actions
+          = f.button :submit, "Cadatrar", class: "text-uppercase btn btn-lg btn-primary col-12 button-submit-auth-entry"
+
+        .form-row
+          .text-center.mt-2
+            %p.fs-6.lh-sm
+              Faça #{link_to "Login", "/users/sign_in", class: "text-uppercase submit_auth"}
