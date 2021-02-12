@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'haml'
 gem 'haml-rails'
+gem 'image_processing'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "#"} Offcanvas navbar
+  %a.navbar-brand{:href => "/"} OpenVagas
   %button.navbar-toggler.p-0.border-0{"data-toggle" => "offcanvas", :type => "button"}
     %span.navbar-toggler-icon
   #navbarsExampleDefault.navbar-collapse.offcanvas-collapse
@@ -8,10 +8,17 @@
         %a.nav-link{:href => "#"}
           Dashboard
           %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{:href => "#"} Notifications
+      - if user_signed_in?
+        %li.nav-item
+          %a.nav-link{:href => redirecionar_para_edit }
+            Minha Empresa
+      - unless user_signed_in?
+        %li.nav-item
+          = link_to "Login/Cadastro", new_user_session_path, class: "nav-link"
       %li.nav-item.dropdown
         %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Settings
         .dropdown-menu{"aria-labelledby" => "dropdown01"}
-          .dropdown-item
-            = link_to "Sign out", destroy_user_session_path, :method => :delete, class: "text-decoration-none text-reset"
+          - if user_signed_in?
+            .dropdown-item
+              = link_to "Sign out", destroy_user_session_path, :method => :delete, class: "text-decoration-none text-reset"
+
