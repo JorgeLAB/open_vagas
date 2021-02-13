@@ -1,0 +1,19 @@
+%table.table
+  %thead.thead-dark
+    %tr
+      %th{:scope => "col"} Titulo
+      %th{:scope => "col"} Carreira
+      %th{:scope => "col"} Local
+      %th{:scope => "col"} Tipo de Contrato
+      %th{:scope => "col"} Candidaturas
+      %th{:scope => "col"} Açoes
+  %tbody
+    - @positions.each do |position|
+      %tr
+        %th{:scope => "row"}= position.name
+        %td= position.career
+        %td= position.city
+        %td= position.contract
+        %td 1 (ver detalhes)
+        %td
+          = link_to 'Editar', edit_position_path(position)

@@ -12,9 +12,13 @@
         %li.nav-item
           %a.nav-link{:href => redirecionar_para_edit }
             Minha Empresa
+        %li.nav-item
+          = link_to "Publicar vaga", new_position_path, class: "nav-link"
+
       - unless user_signed_in?
         %li.nav-item
           = link_to "Login/Cadastro", new_user_session_path, class: "nav-link"
+
       %li.nav-item.dropdown
         %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Settings
         .dropdown-menu{"aria-labelledby" => "dropdown01"}

@@ -19,6 +19,17 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def update
+    @company = current_user.company
+
+    if @company.update(company_params)
+      flash[:notice] = 'Empresa atualizado com sucesso'
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def company_params
