@@ -74,6 +74,22 @@ body {
   user-select: none;
 }
 
+.container {
+  padding: 20px;
+  background: white;
+  border: 1px solid rgba(0, 0 ,0, 0.1);
+  border-radius: 2px;
+  box-shadow: 0px 0px 6px #888;
+  margin: 20px auto 40px auto;
+}
+
+footer {
+  background: rgba(0, 0 ,0, 0.1);
+  padding:  10px 0px;
+  margin:  auto;
+  text-align:  center;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
