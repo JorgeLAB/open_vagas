@@ -1,4 +1,8 @@
 %table.table
+  - flash.each do |type, msg|
+    %div{:class => "alert alert-primary"}
+      = msg
+
   %thead.thead-dark
     %tr
       %th{:scope => "col"} Titulo

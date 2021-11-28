@@ -18,7 +18,7 @@ class PositionsController < ApplicationController
     @position.update(params_position)
 
     if @position.save
-      redirect_to positions_path
+      redirect_to positions_path, notice: "Atualizado com sucesso"
     else
       render :edit
     end
