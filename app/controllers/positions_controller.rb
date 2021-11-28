@@ -10,11 +10,9 @@ class PositionsController < ApplicationController
     @position = @company.positions.new
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def update
     @position.update(params_position)
@@ -59,7 +57,7 @@ class PositionsController < ApplicationController
   end
 
   def set_i18n_contracts
-    @contracts = I18n.t("activerecord.attributes.position.contracts")
+    @contracts =t("activerecord.attributes.position.contracts")
     # @contracts = []
     # Position.contracts.each_with_index do |contracts, index|
     #   @contracts << [
