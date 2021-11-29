@@ -18,3 +18,6 @@
 
 - @positions.each do |position|
   = render position
+
+%p.d-block.text-center.mt-3
+  .text-center= paginate @positions, theme: 'twitter-bootstrap-4'

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @positions = Position.all
+    @positions = Position.page(params[:page]).per(params[:per])
   end
 end
