@@ -26,3 +26,29 @@ import "@rails/actiontext"
 
 require("trix")
 require("@rails/actiontext")
+
+$(function() {
+  $('[data-toggle="offcanvas"]').on('click', function () {
+    $('.offcanvas-collapse').toggleClass('open')
+  })
+})
+
+$(document).ready( function(){
+  if($('#current').length > 0){
+    $('#current').text($('.count-textarea').val().length)
+
+    $('.count-textarea').keyup(function(){
+      var characterCount = $(this).val().length;
+      $('#current').text(characterCount)
+    });
+  };
+
+  $('.copy-url').click(function(){
+    event.preventDefault();
+
+    var url = $(this).attr('data-clipboard-text');
+    navigator.clipboard.writeText(url);
+  })
+})
+
+

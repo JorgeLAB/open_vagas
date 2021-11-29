@@ -34,6 +34,9 @@ class PositionsController < ApplicationController
     end
   end
 
+  def public_position
+  end
+
   private
 
   def set_position
