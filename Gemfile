@@ -22,6 +22,7 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 
 gem 'image_processing'
+gem 'ransack'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
