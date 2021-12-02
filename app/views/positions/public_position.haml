@@ -11,6 +11,8 @@
 .wrapper-form-applicant
   - if user_signed_in?
     %p Você pode se candidatar
-    = render 'applicants/form'
+
+    - unless UserApplicantQuery.new(current_user.id, @position.id).call
+      = render 'applicants/form'
   - else
     %p Você precisa se logar.
