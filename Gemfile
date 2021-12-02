@@ -18,10 +18,15 @@ gem 'simple_form'
 gem 'devise'
 gem 'haml'
 gem 'haml-rails'
+
+# Paginacao
 gem 'kaminari'
+
 gem 'bootstrap4-kaminari-views'
 
 gem 'image_processing'
+
+# Busca
 gem 'ransack'
 
 gem 'bootsnap', '>= 1.4.2', require: false
