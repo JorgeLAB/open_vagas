@@ -11,11 +11,15 @@ require("channels")
 import 'jquery'
 import 'popper.js'
 import 'bootstrap'
+import 'sweetalert2'
 import "./scss/application"
 import "./custom"
 import "./devise"
 import "trix"
 import "@rails/actiontext"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+window.Swal = Swal
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -50,5 +54,3 @@ $(document).ready( function(){
     navigator.clipboard.writeText(url);
   })
 })
-
-

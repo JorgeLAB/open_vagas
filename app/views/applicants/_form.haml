@@ -1,0 +1,8 @@
+%h3 Formulário para aplicar a vaga
+
+= simple_form_for @applicant do |f|
+  = f.hidden_field :position_id, value: @position.id, as: :hidden
+  = f.input :name
+  = f.input :email, input_html: { value: current_user.email }
+  = f.input :phone
+  = f.button :submit, class: 'btn btn-primary'
