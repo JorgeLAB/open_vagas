@@ -1,0 +1,2 @@
+$("#modal").find(".modal-content").html("<%= j render(:partial => 'applicants/formodal', :locals => { :applicant => @applicant, :position => @position}) %>");
+$("#modal").modal();

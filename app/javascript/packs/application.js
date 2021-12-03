@@ -31,6 +31,9 @@ window.Swal = Swal
 require("trix")
 require("@rails/actiontext")
 
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
+
 $(function() {
   $('[data-toggle="offcanvas"]').on('click', function () {
     $('.offcanvas-collapse').toggleClass('open')

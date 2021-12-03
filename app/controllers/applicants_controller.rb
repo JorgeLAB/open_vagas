@@ -1,20 +1,23 @@
 class ApplicantsController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def new
-  end
+  def new; end
 
   def create
     @applicant = current_user.applicants.new(applicant_params)
+    @position = Position.find(applicant_params[:position_id])
 
-    if @applicant.save
-      flash[:success] = 'Você acabou de aplicar com sucesso.'
-    else
-      flash[:error] = 'Deu Ruim.'
+    respond_to do |format|
+      if @applicant.save
+        flash[:success] = 'Você acabou de aplicar com sucesso.'
+        format.html { redirect_to public_position_path(@applicant.position.slug) }
+        format.js { render 'applicants/success' }
+      else
+        flash[:error] = 'Deu Ruim.'
+        format.html { render 'positions/public_position' }
+        format.js { render partial: 'applicants/new' }
+      end
     end
-
-    redirect_to public_position_path(@applicant.position.slug)
   end
 
   private
