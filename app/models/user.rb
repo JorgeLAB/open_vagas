@@ -6,4 +6,11 @@ class User < ApplicationRecord
 
   has_one :company
   has_many :applicants
+  after_create :welcome_mail
+
+  private
+
+  def welcome_mail
+    UserMailer.welcome(self).deliver_now
+  end
 end
