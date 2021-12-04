@@ -45,8 +45,8 @@ class ExportResume
 
       File.read(temp_file)
     ensure
-      # temp_file.close
-      # filepaths.each { |fiilepath| FileUtils.rm(filepath) }
+      temp_file.close
+      filepaths.each { |filepath| FileUtils.rm(filepath) }
     end
   end
 end

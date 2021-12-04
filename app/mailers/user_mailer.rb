@@ -15,12 +15,10 @@ class UserMailer < ApplicationMailer
   def export_resume(user, position)
     @user = user
     zip_name = "#{SecureRandom.alphanumeric(10)}-curriculos.zip"
-
-    binding.pry
-
     ExportResume.new(user, position, zip_name).generate
     attachments[zip_name] = File.read(Rails.root.join('tmp', zip_name).to_s)
 
     mail to: @user.email, subject: 'Todos os curriculos foram exportados'
+    File.delete(Rails.root.join('tmp', zip_name).to_s)
   end
 end

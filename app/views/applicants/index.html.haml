@@ -1,5 +1,8 @@
-%h1 Applicants#index
-%p Find me in app/views/applicants/index.html.haml
+%h1 Vagas Aplicadas
+- if @applicants.size > 0
+  = link_to "Exportar CSV", position_applicants_path(@position, format: 'csv'), class: "btn btn-primary"
+  = link_to "Exportar Currículos", position_applicants_path(@position, format: 'zip'), class: "btn btn-primary"
+
 
 %table.table
   - flash.each do |type, msg|
@@ -11,7 +14,6 @@
       %th{:scope => "col"} Nome
       %th{:scope => "col"} E-mail
       %th{:scope => "col"} Telefone
-      %th{:scope => "col"} Currículo
       %th{:scope => "col"} Ações
   %tbody
     - @applicants.each do |applicant|
@@ -21,8 +23,5 @@
         %td= applicant.phone
         - if applicant.resume.present?
           %td= link_to "Download", rails_blob_path(applicant.resume, disposition: "attachment"), class: 'btn btn-warning'
-          %td= link_to "Exportar CSV", position_applicants_path(@position, format: 'csv'), class: "btn btn-primary"
-
         - else
           %td= link_to "Download", "#", class: "btn btn-secondary"
-          %td= link_to "Exportar CSV", "#", class: "btn btn-secondary"
