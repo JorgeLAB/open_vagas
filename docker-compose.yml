@@ -1,0 +1,58 @@
+version: "2"
+services:
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/usr/src/openvagas
+    expose:
+      - "3000"
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    env_file: .env.development
+    environment:
+      RAILS_ENV: development
+    depends_on:
+      - db
+      - redis
+    links:
+      - mailcatcher
+  db:
+    image: postgres:13.2-alpine
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+  mailcatcher:
+    restart: on-failure:10
+    image: dockage/mailcatcher:0.7.1
+    ports:
+    - "1080:1080"
+    - "1025:1025"
+  redis:
+    image: redis:6.0.12-alpine
+    command: redis-server
+    volumes:
+      - redis:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    logging:
+      driver: none
+  # sidekiq:
+  #   image: openvagas_app
+  #   depends_on:
+  #     - app
+  #     - db
+  #     - redis
+  #   command: dotenv -f ".env.development" bundle exec sidekiq -C config/sidekiq.yml
+  #   env_file: .env.development
+  #   volumes:
+  #     - .:/usr/src/openvagas
+volumes:
+  postgresql:
+  redis:

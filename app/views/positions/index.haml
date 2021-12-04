@@ -18,6 +18,7 @@
         %td= position.career
         %td= position.city
         %td= position.contract
+        %td= modality(position)
         %td 1 (ver detalhes)
-        %td
-          = link_to 'Editar', edit_position_path(position)
+        %td= link_to "Ver aplicaçações (#{position.applicants.count})", position_applicants_path(position), class: 'btn btn-secundary'
+        %td= link_to 'Editar', edit_position_path(position), class: 'btn btn-primary'
