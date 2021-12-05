@@ -43,16 +43,17 @@ services:
       - "127.0.0.1:6379:6379"
     logging:
       driver: none
-  # sidekiq:
-  #   image: openvagas_app
-  #   depends_on:
-  #     - app
-  #     - db
-  #     - redis
-  #   command: dotenv -f ".env.development" bundle exec sidekiq -C config/sidekiq.yml
-  #   env_file: .env.development
-  #   volumes:
-  #     - .:/usr/src/openvagas
+  sidekiq:
+    build: .
+    depends_on:
+      - app
+      - db
+      - redis
+    env_file: .env.development
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    env_file: .env.development
+    volumes:
+      - .:/usr/src/openvagas
 volumes:
   postgresql:
   redis:
